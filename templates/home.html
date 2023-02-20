@@ -9,27 +9,37 @@
     #bannner {
       height: 360px;
       width: 100%;
+      object-fit: cover;
+      margin-bottom: 16px ;
     }
   </style>
   
   <title>Wycliffe Careers</title>
 </head>
   <body>
+    {% include 'nav.html' %}
+    <img class="img-fluid" id="banner" src="https://wycliffe-career-website.wicmarsh.repl.co/static/banner.jpg" >
     <div class="container">
       <h1 class="text-center mt-2 mb-4">Wycliffe Careers</h1>
-      <img class="img-fluid" id="banner" src="https://wycliffe-career-website.wicmarsh.repl.co/static/banner.jpg" >
-      <h2 class="text-center mt-2 mb-4">About Wycliffe</h2>
+      <div class="row" style="margin-bottom: 16px;">
+        <div class="col-6">
       <p class="lead">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
+        </div>
+        <div class="col-6">
+        <img src="/static/people.jpg" style="height: 320px; border-radius:4px;">
+        </div>
+      </div>
       <h2 class="text-center mt-2 mb-4">Open Positions</h2>
         {% for job in jobs %}
           {% include 'jobitem.html' %}
         {% endfor %}
       <div class="text-center">
-      <button class="btn btn-primary btn-lg">Contact Us</button>
+      <a class="btn btn-primary btn-lg" href="malito:hello@wycliffe.ai? subject=Contact us">Contact Us</a>
         <p class="mt-4">Copyright 2023, Wycliffe</p>
         </div
     </div>
+    {% include 'footer.html' %}
   </body>
 </html>
