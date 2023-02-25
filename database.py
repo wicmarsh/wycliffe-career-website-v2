@@ -8,11 +8,8 @@ engine = create_engine(
   connect_args={
         "ssl": {
             "ca": "/etc/ssl/cert.pem",
-            # "cert": "/home/gord/client-ssl/client-cert.pem",
-            # "key": "/home/gord/client-ssl/client-key.pem"
         }
-    }
-)
+    })
 
 
 def load_jobs_from_db():
