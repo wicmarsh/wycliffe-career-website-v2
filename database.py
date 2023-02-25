@@ -1,7 +1,7 @@
-import sqlalchemy, text
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
+import os
 
-db_connection_string = "mysql+pymysql://sj9w2rsc04a2p94nukju:pscale_pw_rwZTJYd18oer1Qnuavu99p0B7a1FKrFhzHh0ALhk7ZS@us-west.connect.psdb.cloud/wycliffecareers?charset=utf8mb4"
+db_connection_string = os.environ['DB_CONNECTION_STR']
 
 engine = create_engine(
   db_connection_string,
@@ -13,6 +13,13 @@ engine = create_engine(
         }
     }
 )
-with engine.connect() as conn:
-  result = conn.execute(text("select * from jobs"))
-  print(result.all())
+
+
+def load_jobs_from_db():
+  with engine.connect() as conn:
+    result = conn.execute(text("select * from jobs"))
+    jobs = []
+    for row in result.all():
+      jobs.append(dict(row))
+    return jobs
+  
